@@ -47,55 +47,56 @@ task installSmartClient(type: Copy) {
     from("${scProDir}/smartclientRuntime/WEB-INF/lib") {
         into 'lib'
     }
-    from("${scProDir}/lib") {
-        into 'lib'
-    }
 
     into layout.projectDirectory
 }
 
 task installAnalytics(type: Copy) {
-    description = 'Copy Analytics module runtime and JARs'
+    description = 'Copy Analytics module JS into client runtime'
     group = 'setup'
 
     def analyticsDir = project.findProperty('analyticsDir')
     doFirst {
         if (analyticsDir == null) {
-            throw new GradleException('Usage: gradle installAnalytics -PanalyticsDir=<Analytics distribution root>')
+            throw new GradleException('Usage: gradle installAnalytics -PanalyticsDir=<Analytics module root>')
         }
     }
 
-    from("${analyticsDir}/smartclientRuntime/isomorphic") {
-        into 'src/main/webapp/isomorphic'
+    from(analyticsDir) {
+        include 'ISC_Analytics.js'
+        include 'ISC_Analytics.js.gz'
+        into 'src/main/webapp/isomorphic/system/modules'
     }
-    from("${analyticsDir}/smartclientRuntime/WEB-INF/lib") {
-        into 'lib'
-    }
-    from("${analyticsDir}/lib") {
-        into 'lib'
+    from("${analyticsDir}/modules-debug") {
+        include 'ISC_Analytics.js'
+        into 'src/main/webapp/isomorphic/system/modules-debug'
     }
 
     into layout.projectDirectory
 }
 
 task installRtm(type: Copy) {
-    description = 'Copy RealtimeMessaging module runtime and JARs'
+    description = 'Copy RealtimeMessaging module JS and JARs'
     group = 'setup'
 
     def rtmDir = project.findProperty('rtmDir')
     doFirst {
         if (rtmDir == null) {
-            throw new GradleException('Usage: gradle installRtm -PrtmDir=<RTM distribution root>')
+            throw new GradleException('Usage: gradle installRtm -PrtmDir=<RTM module root>')
         }
     }
 
-    from("${rtmDir}/smartclientRuntime/isomorphic") {
-        into 'src/main/webapp/isomorphic'
+    from(rtmDir) {
+        include 'ISC_RealtimeMessaging.js'
+        include 'ISC_RealtimeMessaging.js.gz'
+        into 'src/main/webapp/isomorphic/system/modules'
     }
-    from("${rtmDir}/smartclientRuntime/WEB-INF/lib") {
-        into 'lib'
+    from("${rtmDir}/modules-debug") {
+        include 'ISC_RealtimeMessaging.js'
+        into 'src/main/webapp/isomorphic/system/modules-debug'
     }
-    from("${rtmDir}/lib") {
+    from(rtmDir) {
+        include '*.jar'
         into 'lib'
     }
 
@@ -103,23 +104,27 @@ task installRtm(type: Copy) {
 }
 
 task installAi(type: Copy) {
-    description = 'Copy AI module runtime and JARs'
+    description = 'Copy AI module JS and JARs'
     group = 'setup'
 
     def aiDir = project.findProperty('aiDir')
     doFirst {
         if (aiDir == null) {
-            throw new GradleException('Usage: gradle installAi -PaiDir=<AI distribution root>')
+            throw new GradleException('Usage: gradle installAi -PaiDir=<AI module root>')
         }
     }
 
-    from("${aiDir}/smartclientRuntime/isomorphic") {
-        into 'src/main/webapp/isomorphic'
+    from(aiDir) {
+        include 'ISC_AI.js'
+        include 'ISC_AI.js.gz'
+        into 'src/main/webapp/isomorphic/system/modules'
     }
-    from("${aiDir}/smartclientRuntime/WEB-INF/lib") {
-        into 'lib'
+    from("${aiDir}/modules-debug") {
+        include 'ISC_AI.js'
+        into 'src/main/webapp/isomorphic/system/modules-debug'
     }
-    from("${aiDir}/lib") {
+    from(aiDir) {
+        include '*.jar'
         into 'lib'
     }
 

@@ -31,54 +31,121 @@
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- SmartClient server JARs (copied into lib/ by install-smartclient profile) -->
         <dependency>
             <groupId>com.isomorphic</groupId>
-            <artifactId>smartclient-server</artifactId>
+            <artifactId>isomorphic-core-rpc</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/isomorphic-core-rpc.jar</systemPath>
+            <systemPath>${project.basedir}/lib/isomorphic_core_rpc.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.isomorphic</groupId>
-            <artifactId>smartclient-network</artifactId>
+            <artifactId>isomorphic-assembly</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/isomorphic-network.jar</systemPath>
+            <systemPath>${project.basedir}/lib/isomorphic_assembly.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.isomorphic</groupId>
-            <artifactId>smartclient-sql</artifactId>
+            <artifactId>isomorphic-compression</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/isomorphic-sql.jar</systemPath>
+            <systemPath>${project.basedir}/lib/isomorphic_compression.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.isomorphic</groupId>
-            <artifactId>smartclient-datasource</artifactId>
+            <artifactId>isomorphic-js-parser</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/isomorphic-datasource.jar</systemPath>
+            <systemPath>${project.basedir}/lib/isomorphic_js_parser.jar</systemPath>
+        </dependency>
+
+        <!-- Third-party deps bundled with SmartClient -->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-collections-3.2.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-jxpath</groupId>
+            <artifactId>commons-jxpath</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-jxpath-1.3.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-pool-1.6.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload2</groupId>
+            <artifactId>commons-fileupload2-core</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-fileupload2-core-2.0.0-M2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload2</groupId>
+            <artifactId>commons-fileupload2-jakarta-servlet5</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-fileupload2-jakarta-servlet5-2.0.0-M2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-io-2.16.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-codec-1.15.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-lang-2.6.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.isomorphic</groupId>
-            <artifactId>smartclient-tools</artifactId>
+            <artifactId>isc-log4j-api</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/isomorphic-tools.jar</systemPath>
+            <systemPath>${project.basedir}/lib/log4j-api-2.17.1.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.isomorphic</groupId>
-            <artifactId>smartclient-autotest</artifactId>
+            <artifactId>isc-log4j-core</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/isomorphic-autotest.jar</systemPath>
+            <systemPath>${project.basedir}/lib/log4j-core-2.17.1.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.isomorphic</groupId>
-            <artifactId>smartclient-spring</artifactId>
+            <artifactId>isc-log4j-slf4j-impl</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/isomorphic-spring.jar</systemPath>
+            <systemPath>${project.basedir}/lib/log4j-slf4j-impl-2.17.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.isomorphic</groupId>
+            <artifactId>isc-slf4j-api</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/slf4j-api-1.7.30.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -148,19 +215,6 @@
                                     </resources>
                                 </configuration>
                             </execution>
-                            <execution>
-                                <id>copy-sc-third-party-jars</id>
-                                <phase>generate-resources</phase>
-                                <goals><goal>copy-resources</goal></goals>
-                                <configuration>
-                                    <outputDirectory>${project.basedir}/lib</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${scProDir}/lib</directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
                         </executions>
                     </plugin>
                 </plugins>
@@ -176,40 +230,34 @@
                         <artifactId>maven-resources-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>copy-analytics-runtime</id>
+                                <id>copy-analytics-modules</id>
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules</outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${analyticsDir}/smartclientRuntime/isomorphic</directory>
+                                            <directory>${analyticsDir}</directory>
+                                            <includes>
+                                                <include>ISC_Analytics.js</include>
+                                                <include>ISC_Analytics.js.gz</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>copy-analytics-server-jars</id>
+                                <id>copy-analytics-modules-debug</id>
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/lib</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules-debug</outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${analyticsDir}/smartclientRuntime/WEB-INF/lib</directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy-analytics-third-party-jars</id>
-                                <phase>generate-resources</phase>
-                                <goals><goal>copy-resources</goal></goals>
-                                <configuration>
-                                    <outputDirectory>${project.basedir}/lib</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${analyticsDir}/lib</directory>
+                                            <directory>${analyticsDir}/modules-debug</directory>
+                                            <includes>
+                                                <include>ISC_Analytics.js</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
@@ -229,40 +277,50 @@
                         <artifactId>maven-resources-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>copy-rtm-runtime</id>
+                                <id>copy-rtm-modules</id>
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules</outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${rtmDir}/smartclientRuntime/isomorphic</directory>
+                                            <directory>${rtmDir}</directory>
+                                            <includes>
+                                                <include>ISC_RealtimeMessaging.js</include>
+                                                <include>ISC_RealtimeMessaging.js.gz</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>copy-rtm-server-jars</id>
+                                <id>copy-rtm-modules-debug</id>
+                                <phase>generate-resources</phase>
+                                <goals><goal>copy-resources</goal></goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules-debug</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${rtmDir}/modules-debug</directory>
+                                            <includes>
+                                                <include>ISC_RealtimeMessaging.js</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-rtm-jars</id>
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
                                     <outputDirectory>${project.basedir}/lib</outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${rtmDir}/smartclientRuntime/WEB-INF/lib</directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy-rtm-third-party-jars</id>
-                                <phase>generate-resources</phase>
-                                <goals><goal>copy-resources</goal></goals>
-                                <configuration>
-                                    <outputDirectory>${project.basedir}/lib</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${rtmDir}/lib</directory>
+                                            <directory>${rtmDir}</directory>
+                                            <includes>
+                                                <include>*.jar</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
@@ -282,40 +340,50 @@
                         <artifactId>maven-resources-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>copy-ai-runtime</id>
+                                <id>copy-ai-modules</id>
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules</outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${aiDir}/smartclientRuntime/isomorphic</directory>
+                                            <directory>${aiDir}</directory>
+                                            <includes>
+                                                <include>ISC_AI.js</include>
+                                                <include>ISC_AI.js.gz</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>copy-ai-server-jars</id>
+                                <id>copy-ai-modules-debug</id>
+                                <phase>generate-resources</phase>
+                                <goals><goal>copy-resources</goal></goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules-debug</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${aiDir}/modules-debug</directory>
+                                            <includes>
+                                                <include>ISC_AI.js</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-ai-jars</id>
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
                                     <outputDirectory>${project.basedir}/lib</outputDirectory>
                                     <resources>
                                         <resource>
-                                            <directory>${aiDir}/smartclientRuntime/WEB-INF/lib</directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy-ai-third-party-jars</id>
-                                <phase>generate-resources</phase>
-                                <goals><goal>copy-resources</goal></goals>
-                                <configuration>
-                                    <outputDirectory>${project.basedir}/lib</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${aiDir}/lib</directory>
+                                            <directory>${aiDir}</directory>
+                                            <includes>
+                                                <include>*.jar</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
