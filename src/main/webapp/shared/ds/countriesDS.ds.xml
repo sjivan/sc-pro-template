@@ -5,8 +5,8 @@
     dbName="HSQLDB"
 >
     <fields>
-        <field name="countryCode"    nativeName="country_code"  type="text"     length="10"  primaryKey="true" />
-        <field name="countryName"    nativeName="country_name"  type="text"     length="100" />
+        <field name="countryCode"    nativeName="country_code"  type="text"     length="10"  primaryKey="true" required="true" />
+        <field name="countryName"    nativeName="country_name"  type="text"     length="100" required="true" />
         <field name="continent"                                 type="text"     length="50"  />
         <field name="area"                                      type="integer" />
         <field name="population"                                type="integer" />
