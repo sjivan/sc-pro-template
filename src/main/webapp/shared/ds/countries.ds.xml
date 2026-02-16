@@ -1,0 +1,21 @@
+<DataSource
+    ID="countriesDS"
+    serverType="sql"
+    tableName="country"
+    dbName="HSQLDB"
+>
+    <fields>
+        <field name="countryCode"    nativeName="country_code"  type="text"     length="10"  primaryKey="true" />
+        <field name="countryName"    nativeName="country_name"  type="text"     length="100" />
+        <field name="continent"                                 type="text"     length="50"  />
+        <field name="area"                                      type="integer" />
+        <field name="population"                                type="integer" />
+        <field name="gdp"                                       type="integer" />
+        <field name="independence"                              type="date"    />
+        <field name="government"                                type="text"     length="200" />
+        <field name="government_desc"                           type="integer" />
+        <field name="capital"                                   type="text"     length="100" />
+        <field name="member_g8"                                 type="boolean" />
+        <field name="article"                                   type="text"     length="500" />
+    </fields>
+</DataSource>

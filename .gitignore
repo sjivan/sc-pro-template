@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+
+# Claude Code
+.claude/
+
+# SmartClient Pro client runtime
+src/main/webapp/isomorphic/
+
+# SmartClient Pro server JARs
+lib/

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+
+    <script>var isomorphicDir = "isomorphic/";</script>
+
+    <link rel="stylesheet" href="isomorphic/skins/Shiva/skin_styles.css">
+
+    <script src="isomorphic/system/modules/ISC_Core.js"></script>
+    <script src="isomorphic/system/modules/ISC_Foundation.js"></script>
+    <script src="isomorphic/system/modules/ISC_Containers.js"></script>
+    <script src="isomorphic/system/modules/ISC_Grids.js"></script>
+    <script src="isomorphic/system/modules/ISC_Forms.js"></script>
+    <script src="isomorphic/system/modules/ISC_DataBinding.js"></script>
+
+    <script src="isomorphic/skins/Shiva/load_skin.js"></script>
+
+    <script src="isomorphic/DataSourceLoader?dataSource=countriesDS"></script>
+</head>
+<body>
+<script>
+
+isc.VLayout.create({
+    width: "100%",
+    height: "100%",
+    members: [
+        isc.ToolStrip.create({
+            width: "100%",
+            members: [
+                isc.ToolStripButton.create({
+                    icon: "[SKIN]actions/add.png",
+                    title: "Add Country",
+                    click: function () {
+                        var grid = window.countryGrid;
+                        grid.startEditingNew({ member_g8: false });
+                    }
+                }),
+                isc.ToolStripButton.create({
+                    icon: "[SKIN]actions/remove.png",
+                    title: "Remove Selected",
+                    click: function () {
+                        var grid = window.countryGrid;
+                        var record = grid.getSelectedRecord();
+                        if (record) grid.removeSelectedData();
+                    }
+                })
+            ]
+        }),
+        isc.ListGrid.create({
+            ID: "countryGrid",
+            dataSource: "countriesDS",
+            autoFetchData: true,
+            width: "100%",
+            height: "*",
+            canEdit: true,
+            editEvent: "doubleClick",
+            listEndEditAction: "save",
+            autoSaveEdits: true,
+            canRemoveRecords: true,
+            fields: [
+                { name: "countryCode", width: 60 },
+                { name: "countryName", width: 150 },
+                { name: "continent", width: 120 },
+                { name: "capital", width: 120 },
+                { name: "population", width: 110 },
+                { name: "area", width: 100 },
+                { name: "gdp", width: 100 },
+                { name: "independence", width: 110 },
+                { name: "government", width: 150 },
+                { name: "member_g8", width: 80 }
+            ]
+        })
+    ]
+});
+
+</script>
+</body>
+</html>

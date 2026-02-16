@@ -1,0 +1,133 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.springframework.boot' version '4.0.0'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '1.0.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+task installSmartClient(type: Copy) {
+    description = 'Copy SmartClient Pro runtime and server JARs from distribution'
+    group = 'setup'
+
+    def scProDir = project.findProperty('scProDir')
+    doFirst {
+        if (scProDir == null) {
+            throw new GradleException('Usage: gradle installSmartClient -PscProDir=<SmartClient Pro distribution root>')
+        }
+    }
+
+    // Client runtime (excluding extra skins, reference, development)
+    from("${scProDir}/smartclientRuntime/isomorphic") {
+        exclude 'skins/**'
+        exclude 'system/reference/**'
+        exclude 'system/development/**'
+        into 'src/main/webapp/isomorphic'
+    }
+    from("${scProDir}/smartclientRuntime/isomorphic/skins/Shiva") {
+        into 'src/main/webapp/isomorphic/skins/Shiva'
+    }
+    from("${scProDir}/smartclientRuntime/isomorphic/skins/fonts") {
+        into 'src/main/webapp/isomorphic/skins/fonts'
+    }
+
+    // Server JARs
+    from("${scProDir}/smartclientRuntime/WEB-INF/lib") {
+        into 'lib'
+    }
+    from("${scProDir}/lib") {
+        into 'lib'
+    }
+
+    into layout.projectDirectory
+}
+
+task installAnalytics(type: Copy) {
+    description = 'Copy Analytics module runtime and JARs'
+    group = 'setup'
+
+    def analyticsDir = project.findProperty('analyticsDir')
+    doFirst {
+        if (analyticsDir == null) {
+            throw new GradleException('Usage: gradle installAnalytics -PanalyticsDir=<Analytics distribution root>')
+        }
+    }
+
+    from("${analyticsDir}/smartclientRuntime/isomorphic") {
+        into 'src/main/webapp/isomorphic'
+    }
+    from("${analyticsDir}/smartclientRuntime/WEB-INF/lib") {
+        into 'lib'
+    }
+    from("${analyticsDir}/lib") {
+        into 'lib'
+    }
+
+    into layout.projectDirectory
+}
+
+task installRtm(type: Copy) {
+    description = 'Copy RealtimeMessaging module runtime and JARs'
+    group = 'setup'
+
+    def rtmDir = project.findProperty('rtmDir')
+    doFirst {
+        if (rtmDir == null) {
+            throw new GradleException('Usage: gradle installRtm -PrtmDir=<RTM distribution root>')
+        }
+    }
+
+    from("${rtmDir}/smartclientRuntime/isomorphic") {
+        into 'src/main/webapp/isomorphic'
+    }
+    from("${rtmDir}/smartclientRuntime/WEB-INF/lib") {
+        into 'lib'
+    }
+    from("${rtmDir}/lib") {
+        into 'lib'
+    }
+
+    into layout.projectDirectory
+}
+
+task installAi(type: Copy) {
+    description = 'Copy AI module runtime and JARs'
+    group = 'setup'
+
+    def aiDir = project.findProperty('aiDir')
+    doFirst {
+        if (aiDir == null) {
+            throw new GradleException('Usage: gradle installAi -PaiDir=<AI distribution root>')
+        }
+    }
+
+    from("${aiDir}/smartclientRuntime/isomorphic") {
+        into 'src/main/webapp/isomorphic'
+    }
+    from("${aiDir}/smartclientRuntime/WEB-INF/lib") {
+        into 'lib'
+    }
+    from("${aiDir}/lib") {
+        into 'lib'
+    }
+
+    into layout.projectDirectory
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation fileTree(dir: 'lib', include: '*.jar')
+    runtimeOnly 'org.hsqldb:hsqldb'
+}
