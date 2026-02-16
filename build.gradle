@@ -43,8 +43,17 @@ task installSmartClient(type: Copy) {
         into 'src/main/webapp/isomorphic/skins/fonts'
     }
 
-    // Server JARs
+    // Server JARs (Runtime + SDK)
     from("${scProDir}/smartclientRuntime/WEB-INF/lib") {
+        into 'lib'
+    }
+    from("${scProDir}/smartclientSDK/WEB-INF/lib") {
+        include 'isomorphic_sql.jar'
+        include 'isomorphic_tools.jar'
+        include 'isomorphic_spring.jar'
+        include 'isomorphic_autotest.jar'
+        include 'isomorphic_contentexport.jar'
+        include 'commons-dbcp-1.4.jar'
         into 'lib'
     }
 
@@ -131,8 +140,15 @@ task installAi(type: Copy) {
     into layout.projectDirectory
 }
 
+configurations.all {
+    exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation fileTree(dir: 'lib', include: '*.jar')
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:4.0.0'
+    implementation fileTree(dir: 'lib', include: '*.jar',
+        exclude: ['log4j-slf4j-impl-*.jar', 'slf4j-api-*.jar'])
     runtimeOnly 'org.hsqldb:hsqldb'
 }

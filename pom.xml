@@ -27,6 +27,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
@@ -211,6 +215,27 @@
                                     <resources>
                                         <resource>
                                             <directory>${scProDir}/smartclientRuntime/WEB-INF/lib</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-sc-sdk-jars</id>
+                                <phase>generate-resources</phase>
+                                <goals><goal>copy-resources</goal></goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/lib</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${scProDir}/smartclientSDK/WEB-INF/lib</directory>
+                                            <includes>
+                                                <include>isomorphic_sql.jar</include>
+                                                <include>isomorphic_tools.jar</include>
+                                                <include>isomorphic_spring.jar</include>
+                                                <include>isomorphic_autotest.jar</include>
+                                                <include>isomorphic_contentexport.jar</include>
+                                                <include>commons-dbcp-1.4.jar</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
