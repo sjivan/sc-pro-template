@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'war'
     id 'org.springframework.boot' version '4.0.0'
     id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -36,13 +35,13 @@ task installSmartClient(type: Copy) {
         exclude 'skins/**'
         exclude 'system/reference/**'
         exclude 'system/development/**'
-        into 'src/main/webapp/isomorphic'
+        into 'src/main/resources/public/isomorphic'
     }
     from("${scProDir}/smartclientRuntime/isomorphic/skins/Shiva") {
-        into 'src/main/webapp/isomorphic/skins/Shiva'
+        into 'src/main/resources/public/isomorphic/skins/Shiva'
     }
     from("${scProDir}/smartclientRuntime/isomorphic/skins/fonts") {
-        into 'src/main/webapp/isomorphic/skins/fonts'
+        into 'src/main/resources/public/isomorphic/skins/fonts'
     }
 
     // Server JARs (Runtime + SDK)
@@ -81,11 +80,11 @@ task installAnalytics(type: Copy) {
     from(analyticsDir) {
         include 'ISC_Analytics.js'
         include 'ISC_Analytics.js.gz'
-        into 'src/main/webapp/isomorphic/system/modules'
+        into 'src/main/resources/public/isomorphic/system/modules'
     }
     from("${analyticsDir}/modules-debug") {
         include 'ISC_Analytics.js'
-        into 'src/main/webapp/isomorphic/system/modules-debug'
+        into 'src/main/resources/public/isomorphic/system/modules-debug'
     }
 
     into layout.projectDirectory
@@ -105,11 +104,11 @@ task installRtm(type: Copy) {
     from(rtmDir) {
         include 'ISC_RealtimeMessaging.js'
         include 'ISC_RealtimeMessaging.js.gz'
-        into 'src/main/webapp/isomorphic/system/modules'
+        into 'src/main/resources/public/isomorphic/system/modules'
     }
     from("${rtmDir}/modules-debug") {
         include 'ISC_RealtimeMessaging.js'
-        into 'src/main/webapp/isomorphic/system/modules-debug'
+        into 'src/main/resources/public/isomorphic/system/modules-debug'
     }
     from(rtmDir) {
         include '*.jar'
@@ -133,11 +132,11 @@ task installAi(type: Copy) {
     from(aiDir) {
         include 'ISC_AI.js'
         include 'ISC_AI.js.gz'
-        into 'src/main/webapp/isomorphic/system/modules'
+        into 'src/main/resources/public/isomorphic/system/modules'
     }
     from("${aiDir}/modules-debug") {
         include 'ISC_AI.js'
-        into 'src/main/webapp/isomorphic/system/modules-debug'
+        into 'src/main/resources/public/isomorphic/system/modules-debug'
     }
     from(aiDir) {
         include '*.jar'

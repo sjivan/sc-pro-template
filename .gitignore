@@ -20,7 +20,7 @@ target/
 .claude/
 
 # SmartClient Pro client runtime
-src/main/webapp/isomorphic/
+src/main/resources/public/isomorphic/
 
 # SmartClient Pro server JARs
 lib/

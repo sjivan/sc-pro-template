@@ -14,7 +14,7 @@
     <groupId>com.example</groupId>
     <artifactId>countries</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>countries</name>
 
     <properties>
@@ -470,7 +470,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${scProDir}/smartclientRuntime/isomorphic</directory>
@@ -488,7 +488,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/skins/Shiva</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/skins/Shiva</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${scProDir}/smartclientRuntime/isomorphic/skins/Shiva</directory>
@@ -501,7 +501,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/skins/fonts</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/skins/fonts</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${scProDir}/smartclientRuntime/isomorphic/skins/fonts</directory>
@@ -563,7 +563,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${scProDir}/smartclientRuntime/isomorphic</directory>
@@ -581,7 +581,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/skins/Shiva</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/skins/Shiva</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${scProDir}/smartclientRuntime/isomorphic/skins/Shiva</directory>
@@ -594,7 +594,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/skins/fonts</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/skins/fonts</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${scProDir}/smartclientRuntime/isomorphic/skins/fonts</directory>
@@ -657,7 +657,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/system/modules</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${analyticsDir}</directory>
@@ -674,7 +674,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules-debug</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/system/modules-debug</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${analyticsDir}/modules-debug</directory>
@@ -704,7 +704,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/system/modules</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${rtmDir}</directory>
@@ -721,7 +721,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules-debug</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/system/modules-debug</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${rtmDir}/modules-debug</directory>
@@ -767,7 +767,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/system/modules</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${aiDir}</directory>
@@ -784,7 +784,7 @@
                                 <phase>generate-resources</phase>
                                 <goals><goal>copy-resources</goal></goals>
                                 <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/isomorphic/system/modules-debug</outputDirectory>
+                                    <outputDirectory>${project.basedir}/src/main/resources/public/isomorphic/system/modules-debug</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>${aiDir}/modules-debug</directory>
